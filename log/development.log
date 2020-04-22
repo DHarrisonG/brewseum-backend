@@ -1,0 +1,913 @@
+  [1m[35m (335.4ms)[0m  [1m[35mCREATE DATABASE "bs_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (104.3ms)[0m  [1m[35mCREATE DATABASE "bs_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (39.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_development"[0m
+  [1m[35m (36.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_test"[0m
+  [1m[35m (1289.3ms)[0m  [1m[35mCREATE DATABASE "bs_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (244.6ms)[0m  [1m[35mCREATE DATABASE "bs_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (137.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (25.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4119871339920659190)[0m
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200421220532)
+  [1m[35m (8.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password" character varying, "image" character varying, "about" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (20.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220532"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBars (20200421220623)
+  [1m[35m (16.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (39.8ms)[0m  [1m[35mCREATE TABLE "bars" ("id" bigserial primary key, "name" character varying, "opened" character varying, "overview" character varying, "image" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220623"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserBars (20200421220752)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4119871339920659190)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4119871339920659190)[0m
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserBars (20200421220752)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4119871339920659190)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4119871339920659190)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserBars (20200421221637)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (35.7ms)[0m  [1m[35mCREATE TABLE "user_bars" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ddfff40346"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_221cab17e7"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (20.4ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_user_id" ON "user_bars"  ("user_id")[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_bar_id" ON "user_bars"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221637"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20200421221706)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "comment" character varying, "likes" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_da25a9c047"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_bar_id" ON "comments"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221706"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (19.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (3.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-21 22:17:22.473884"], ["updated_at", "2020-04-21 22:17:22.473884"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4119871339920659190)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (61.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_development"[0m
+  [1m[35m (83.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_test"[0m
+  [1m[35m (515.5ms)[0m  [1m[35mCREATE DATABASE "bs_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (189.0ms)[0m  [1m[35mCREATE DATABASE "bs_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (23.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4119871339920659190)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200421220532)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password" character varying, "image" character varying, "about" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (13.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220532"]]
+  [1m[35m (10.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBars (20200421220623)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (30.3ms)[0m  [1m[35mCREATE TABLE "bars" ("id" bigserial primary key, "name" character varying, "opened" character varying, "overview" character varying, "image" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220623"]]
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserBars (20200421221637)
+  [1m[35m (5.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE "user_bars" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ddfff40346"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_221cab17e7"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_user_id" ON "user_bars"  ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_bar_id" ON "user_bars"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221637"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20200421221706)
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "comment" character varying, "likes" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_da25a9c047"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_bar_id" ON "comments"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221706"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-21 22:30:15.675534"], ["updated_at", "2020-04-21 22:30:15.675534"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4119871339920659190)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4119871339920659190)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4119871339920659190)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (3.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "spicyboi"], ["password", "dat spicy boi"], ["image", ""], ["about", "I really just want this to work"], ["created_at", "2020-04-21 22:38:19.505106"], ["updated_at", "2020-04-21 22:38:19.505106"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBar Load (18.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1 ORDER BY "bars"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (88.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_development"[0m
+  [1m[35m (54.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_test"[0m
+  [1m[35m (381.2ms)[0m  [1m[35mCREATE DATABASE "bs_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (217.2ms)[0m  [1m[35mCREATE DATABASE "bs_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (142.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (28.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4119871339920659190)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200421220532)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password" character varying, "image" character varying, "about" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (3.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220532"]]
+  [1m[35m (11.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBars (20200421220623)
+  [1m[35m (13.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "bars" ("id" bigserial primary key, "name" character varying, "opened" character varying, "overview" character varying, "image" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220623"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserBars (20200421221637)
+  [1m[35m (27.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (63.9ms)[0m  [1m[35mCREATE TABLE "user_bars" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ddfff40346"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_221cab17e7"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_user_id" ON "user_bars"  ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_bar_id" ON "user_bars"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221637"]]
+  [1m[35m (10.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20200421221706)
+  [1m[35m (7.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (40.7ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "comment" character varying, "likes" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_da25a9c047"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_bar_id" ON "comments"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221706"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (7.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-21 22:39:53.744135"], ["updated_at", "2020-04-21 22:39:53.744135"]]
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4119871339920659190)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "spicyboi"], ["password", "dat spicy boi"], ["image", ""], ["about", "I really just want this to work"], ["created_at", "2020-04-21 22:40:19.711303"], ["updated_at", "2020-04-21 22:40:19.711303"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBar Create (5.2ms)[0m  [1m[32mINSERT INTO "bars" ("name", "opened", "overview", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "ye olde bar"], ["opened", "1868"], ["overview", "it's old as fuck"], ["image", ""], ["created_at", "2020-04-21 22:40:19.730552"], ["updated_at", "2020-04-21 22:40:19.730552"]]
+  [1m[35m (14.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (10.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" WHERE "bars"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserBar Create (4.2ms)[0m  [1m[32mINSERT INTO "user_bars" ("user_id", "bar_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["bar_id", 1], ["created_at", "2020-04-21 22:40:19.825216"], ["updated_at", "2020-04-21 22:40:19.825216"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" WHERE "bars"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Create (25.4ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "bar_id", "comment", "likes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["bar_id", 1], ["comment", "smells like shit"], ["likes", "14"], ["created_at", "2020-04-21 22:40:19.851666"], ["updated_at", "2020-04-21 22:40:19.851666"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mBar Load (1.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUserBar Load (0.4ms)[0m  [1m[34mSELECT "user_bars".* FROM "user_bars" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1 ORDER BY "comments"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2020-04-21 17:48:06 -0500
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 16.3ms | Allocations: 315)
+Completed 200 OK in 52ms (Views: 33.3ms | ActiveRecord: 0.0ms | Allocations: 1687)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-04-21 17:48:08 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2020-04-21 17:48:12 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/user" for ::1 at 2020-04-21 17:48:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-04-21 17:49:56 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 40.1ms | Allocations: 315)
+Completed 200 OK in 67ms (Views: 56.5ms | ActiveRecord: 0.0ms | Allocations: 1596)
+
+
+Started GET "/users" for ::1 at 2020-04-21 17:49:59 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (36.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.7ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 161ms (Views: 45.2ms | ActiveRecord: 98.3ms | Allocations: 20338)
+
+
+Started GET "/users" for ::1 at 2020-04-21 17:50:47 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 143ms (Views: 41.2ms | ActiveRecord: 92.6ms | Allocations: 13767)
+
+
+Started GET "/users" for ::1 at 2020-04-21 17:50:51 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (4.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 4.9ms | Allocations: 1984)
+
+
+Started GET "/users" for ::1 at 2020-04-21 17:52:29 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected '\n', expecting =>
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected '\n', expecting =>
+app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:4: syntax error, unexpected '\n', expecting =>
+app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 17:54:11 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (11.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (3.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 189ms (Views: 69.0ms | ActiveRecord: 114.1ms | Allocations: 21327)
+
+
+Started GET "/users" for ::1 at 2020-04-21 17:56:18 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 160ms (Views: 41.8ms | ActiveRecord: 107.9ms | Allocations: 7285)
+
+
+Started GET "/users" for ::1 at 2020-04-21 17:56:45 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 20ms (Views: 10.4ms | ActiveRecord: 4.1ms | Allocations: 7228)
+
+
+Started GET "/users" for ::1 at 2020-04-21 17:57:10 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (3.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 179ms (Views: 79.0ms | ActiveRecord: 94.2ms | Allocations: 21147)
+
+
+Started GET "/users" for ::1 at 2020-04-21 17:57:57 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected tIDENTIFIER, expecting ']'
+...ted_at], include: [:bars except: [:created_at, :updated_at] ...
+...                         ^~~~~~
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected ',', expecting end
+...t: [:created_at, :updated_at] , :comments]
+...                              ^
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected tIDENTIFIER, expecting ']'
+app/controllers/users_controller.rb:4: syntax error, unexpected ',', expecting end
+app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:4: syntax error, unexpected tIDENTIFIER, expecting ']'
+app/controllers/users_controller.rb:4: syntax error, unexpected ',', expecting end
+app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 17:58:14 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected ']', expecting =>
+...d_at, :updated_at] , :comments]
+...                              ^
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected ']', expecting =>
+app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:4: syntax error, unexpected ']', expecting =>
+app/controllers/users_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 17:58:52 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (2.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 120ms (Views: 68.6ms | ActiveRecord: 46.6ms | Allocations: 21142)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:09:50 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:5: syntax error, unexpected '}'
+...         include: { comments: },
+...                              ^
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:16: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:5: syntax error, unexpected '}'
+app/controllers/users_controller.rb:16: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:5: syntax error, unexpected '}'
+app/controllers/users_controller.rb:16: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:10:04 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:5: syntax error, unexpected '}', expecting =>
+...         include: { :comments },
+...                              ^
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:16: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:16: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:16: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:14:04 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (32.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 81.6ms | Allocations: 9739)
+
+
+  
+NoMethodError (undefined method `bar' for #<User:0x00007fb3e693e990>
+Did you mean?  bars):
+  
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users" for ::1 at 2020-04-21 18:14:22 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 89ms (Views: 42.9ms | ActiveRecord: 41.6ms | Allocations: 16041)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:14:51 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 104ms (Views: 48.8ms | ActiveRecord: 47.6ms | Allocations: 20991)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:15:13 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+...=> {:only => :name}, :comments}, :except => [:created_at, :u...
+...                              ^):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+Started GET "/" for ::1 at 2020-04-21 18:16:30 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 49.4ms | Allocations: 190)
+Completed 200 OK in 54ms (Views: 50.8ms | ActiveRecord: 0.0ms | Allocations: 890)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:16:35 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:7: syntax error, unexpected end, expecting '}'
+  end
+  ^~~
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:7: syntax error, unexpected end, expecting '}'
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:7: syntax error, unexpected end, expecting '}'
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:16:47 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (2.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 97ms (ActiveRecord: 45.1ms | Allocations: 18350)
+
+
+  
+NoMethodError (undefined method `except' for #<User:0x00007fb3e5f09ec0>
+Did you mean?  exec):
+  
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users" for ::1 at 2020-04-21 18:17:08 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected tSTRING_DEND, expecting end
+... => [:created_at, :updated_at]}
+...                              ^
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected tSTRING_DEND, expecting end
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:4: syntax error, unexpected tSTRING_DEND, expecting end
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:17:40 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 53ms (Views: 28.1ms | ActiveRecord: 19.9ms | Allocations: 16015)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:17:56 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+..., :include => {:bars => {:bars}}, :except => [:created_at, :...
+...                              ^):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+Started GET "/users" for ::1 at 2020-04-21 18:18:07 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (1.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 61ms (Views: 30.7ms | ActiveRecord: 22.2ms | Allocations: 16095)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:18:54 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected =>, expecting '}'
+...:bars => {:except => :except => [:created_at, :updated_at]}}...
+...                             ^~
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting end
+... => [:created_at, :updated_at]}}, 
+...                              ^
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected =>, expecting '}'
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting end
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:4: syntax error, unexpected =>, expecting '}'
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting end
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:19:10 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:7: syntax error, unexpected end
+  end
+  ^~~
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:7: syntax error, unexpected end
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:7: syntax error, unexpected end
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:19:16 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 64ms (Views: 37.2ms | ActiveRecord: 21.9ms | Allocations: 16095)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:19:47 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 219ms (Views: 114.3ms | ActiveRecord: 99.4ms | Allocations: 21212)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:20:24 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 68.9ms | Allocations: 23281)
+
+
+  
+NoMethodError (undefined method `except' for #<User:0x00007fb3e90579c8>
+Did you mean?  exec):
+  
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users" for ::1 at 2020-04-21 18:21:06 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 138ms (Views: 114.9ms | ActiveRecord: 16.5ms | Allocations: 21193)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:21:25 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 159ms (Views: 115.6ms | ActiveRecord: 35.7ms | Allocations: 21209)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:22:26 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (6.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (39.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 185ms (ActiveRecord: 86.3ms | Allocations: 24336)
+
+
+  
+NoMethodError (undefined method `bars' for #<Comment:0x00007fb3e55ab400>
+Did you mean?  bar
+               bar=):
+  
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users" for ::1 at 2020-04-21 18:23:46 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected '\n', expecting =>
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected '\n', expecting =>
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:4: syntax error, unexpected '\n', expecting =>
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:23:54 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (5.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (3.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 197ms (ActiveRecord: 70.2ms | Allocations: 24376)
+
+
+  
+NoMethodError (undefined method `bars' for #<Comment:0x00007fb3e55b29f8>
+Did you mean?  bar
+               bar=):
+  
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users" for ::1 at 2020-04-21 18:24:24 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+...clude => :comments}, :comments}
+...                              ^
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:25:04 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (28.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 55.8ms | Allocations: 15446)
+
+
+  
+NoMethodError (undefined method `bars' for #<Comment:0x00007fb3e905f510>
+Did you mean?  bar
+               bar=):
+  
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users" for ::1 at 2020-04-21 18:25:41 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (1.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 188ms (Views: 151.5ms | ActiveRecord: 32.0ms | Allocations: 21242)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:29:29 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+...clude => :comments}, :comments}
+...                              ^
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:4: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:14: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:30:08 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 216ms (ActiveRecord: 0.0ms | Allocations: 78129)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  
+NameError (undefined local variable or method `only' for #<UsersController:0x00007fb3e5e95098>):
+  
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users" for ::1 at 2020-04-21 18:30:18 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 67ms (Views: 44.8ms | ActiveRecord: 16.0ms | Allocations: 22415)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:30:55 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 84ms (ActiveRecord: 17.8ms | Allocations: 24301)
+
+
+  
+NoMethodError (undefined method `bars' for #<Comment:0x00007fb3e909e030>
+Did you mean?  bar
+               bar=):
+  
+app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (5.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBar Load (0.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+Started GET "/" for ::1 at 2020-04-21 18:35:04 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 7)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 395)
+
+
+Started GET "/users" for ::1 at 2020-04-21 18:35:07 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:8: syntax error, unexpected end, expecting '}'
+  end
+  ^~~
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:15: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/users_controller.rb:8: syntax error, unexpected end, expecting '}'
+app/controllers/users_controller.rb:15: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:8: syntax error, unexpected end, expecting '}'
+app/controllers/users_controller.rb:15: syntax error, unexpected end-of-input, expecting end
+Started GET "/users" for ::1 at 2020-04-21 18:35:26 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (8.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 91ms (Views: 53.4ms | ActiveRecord: 22.8ms | Allocations: 21349)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBar Load (0.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1 ORDER BY "bars"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBar Load (0.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1 ORDER BY "bars"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1 LIMIT $2[0m  [["bar_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1 ORDER BY "comments"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1 ORDER BY "comments"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1 ORDER BY "comments"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (5.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" ORDER BY "bars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" ORDER BY "bars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "comments" ON "users"."id" = "comments"."user_id" WHERE "comments"."bar_id" = $1 LIMIT $2[0m  [["bar_id", 1], ["LIMIT", 11]]
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" ORDER BY "bars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" ORDER BY "bars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1 LIMIT $2[0m  [["bar_id", 1], ["LIMIT", 11]]
+Started GET "/users" for ::1 at 2020-04-21 18:43:55 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mBar Load (0.7ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+  [1m[36mComment Load (2.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `index'
+Completed 200 OK in 90ms (Views: 76.9ms | ActiveRecord: 8.6ms | Allocations: 21840)
+
+
+Started GET "/users/1" for ::1 at 2020-04-21 18:45:11 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:11: syntax error, unexpected tIVAR, expecting end
+    render :json @user
+                 ^~~~~):
+  
+app/controllers/users_controller.rb:11: syntax error, unexpected tIVAR, expecting end
+app/controllers/users_controller.rb:11: syntax error, unexpected tIVAR, expecting end
+Started GET "/users/1" for ::1 at 2020-04-21 18:45:42 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:11: syntax error, unexpected tIVAR, expecting end
+    render :json @user, except: [:created_at, :upda...
+                 ^~~~~):
+  
+app/controllers/users_controller.rb:11: syntax error, unexpected tIVAR, expecting end
+app/controllers/users_controller.rb:11: syntax error, unexpected tIVAR, expecting end
+Started GET "/users/1" for ::1 at 2020-04-21 18:46:23 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/users_controller.rb:12: syntax error, unexpected tIVAR, expecting end
+    render :json @user
+                 ^~~~~):
+  
+app/controllers/users_controller.rb:12: syntax error, unexpected tIVAR, expecting end
+app/controllers/users_controller.rb:12: syntax error, unexpected tIVAR, expecting end
+Started GET "/users/1" for ::1 at 2020-04-21 18:46:59 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+Completed 200 OK in 27ms (Views: 0.4ms | ActiveRecord: 9.5ms | Allocations: 7207)
+
+
+Started GET "/users/1" for ::1 at 2020-04-21 18:47:34 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 70ms (Views: 40.1ms | ActiveRecord: 17.6ms | Allocations: 22254)
+
+
+Started GET "/users/1" for ::1 at 2020-04-21 18:48:11 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (1.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 14ms (Views: 9.9ms | ActiveRecord: 2.6ms | Allocations: 4057)
+
+
