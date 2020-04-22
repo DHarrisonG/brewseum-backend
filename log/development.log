@@ -911,3 +911,265 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 14ms (Views: 9.9ms | ActiveRecord: 2.6ms | Allocations: 4057)
 
 
+Started GET "/" for ::1 at 2020-04-22 09:22:19 -0500
+  [1m[35m (5.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.5ms | Allocations: 315)
+Completed 200 OK in 31ms (Views: 20.9ms | ActiveRecord: 0.0ms | Allocations: 1688)
+
+
+Started GET "/users" for ::1 at 2020-04-22 09:22:23 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (20.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (24.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (3.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 275ms (Views: 142.7ms | ActiveRecord: 120.4ms | Allocations: 27482)
+
+
+Started GET "/bars" for ::1 at 2020-04-22 09:22:31 -0500
+Processing by BarsController#index as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 98)
+
+
+Started GET "/bars" for ::1 at 2020-04-22 09:23:00 -0500
+Processing by BarsController#index as HTML
+  [1m[36mBar Load (3.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars"[0m
+  ↳ app/controllers/bars_controller.rb:5:in `index'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "comments" ON "users"."id" = "comments"."user_id" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/bars_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/bars_controller.rb:5:in `index'
+Completed 200 OK in 108ms (Views: 58.4ms | ActiveRecord: 43.6ms | Allocations: 21170)
+
+
+Started GET "/bars" for ::1 at 2020-04-22 09:24:31 -0500
+Processing by BarsController#index as HTML
+  [1m[36mBar Load (0.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars"[0m
+  ↳ app/controllers/bars_controller.rb:5:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "comments" ON "users"."id" = "comments"."user_id" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/bars_controller.rb:5:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/bars_controller.rb:5:in `index'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/bars_controller.rb:5:in `index'
+Completed 200 OK in 76ms (Views: 39.2ms | ActiveRecord: 28.1ms | Allocations: 22483)
+
+
+Started GET "/comments" for ::1 at 2020-04-22 09:43:17 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/comments_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+        render :json @comments, :except [:created_at, :upda...
+                     ^~~~~~~~~
+/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/comments_controller.rb:5: syntax error, unexpected '\n', expecting '='):
+  
+app/controllers/comments_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+app/controllers/comments_controller.rb:5: syntax error, unexpected '\n', expecting '='
+app/controllers/comments_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+app/controllers/comments_controller.rb:5: syntax error, unexpected '\n', expecting '='
+Started GET "/comments" for ::1 at 2020-04-22 09:43:57 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/comments_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+        render :json @comments
+                     ^~~~~~~~~):
+  
+app/controllers/comments_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+app/controllers/comments_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+Started GET "/comments" for ::1 at 2020-04-22 09:44:07 -0500
+Processing by CommentsController#index as HTML
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:5:in `index'
+Completed 200 OK in 38ms (Views: 13.0ms | ActiveRecord: 22.0ms | Allocations: 6174)
+
+
+Started GET "/comments" for ::1 at 2020-04-22 09:44:26 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/comments_controller.rb:5: syntax error, unexpected '\n', expecting =>):
+  
+app/controllers/comments_controller.rb:5: syntax error, unexpected '\n', expecting =>
+app/controllers/comments_controller.rb:5: syntax error, unexpected '\n', expecting =>
+Started GET "/comments" for ::1 at 2020-04-22 09:44:37 -0500
+Processing by CommentsController#index as HTML
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/comments_controller.rb:5:in `index'
+Completed 200 OK in 30ms (Views: 11.3ms | ActiveRecord: 16.7ms | Allocations: 5912)
+
+
+Started GET "/userbars" for ::1 at 2020-04-22 09:45:04 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/userbars"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/user_bars" for ::1 at 2020-04-22 09:45:24 -0500
+  
+SyntaxError (/Users/dougharrison/Development/code/Brewseum/brewseum-backend/app/controllers/user_bars_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+        render :json @userBars, except: [:created_at, :upda...
+                     ^~~~~~~~~):
+  
+app/controllers/user_bars_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+app/controllers/user_bars_controller.rb:5: syntax error, unexpected tIVAR, expecting end
+Started GET "/user_bars" for ::1 at 2020-04-22 09:45:40 -0500
+Processing by UserBarsController#index as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1616)
+
+
+  
+NameError (uninitialized constant UserBarsController::UserBars):
+  
+app/controllers/user_bars_controller.rb:4:in `index'
+Started GET "/user_bars" for ::1 at 2020-04-22 09:45:43 -0500
+Processing by UserBarsController#index as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1576)
+
+
+  
+NameError (uninitialized constant UserBarsController::UserBars):
+  
+app/controllers/user_bars_controller.rb:4:in `index'
+Started GET "/user_bars" for ::1 at 2020-04-22 09:46:05 -0500
+Processing by UserBarsController#index as HTML
+  [1m[36mUserBar Load (13.1ms)[0m  [1m[34mSELECT "user_bars".* FROM "user_bars"[0m
+  ↳ app/controllers/user_bars_controller.rb:5:in `index'
+Completed 200 OK in 37ms (Views: 7.9ms | ActiveRecord: 25.9ms | Allocations: 4714)
+
+
+Started GET "/user_bars" for ::1 at 2020-04-22 09:46:42 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/user_bars"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/user_bars" for ::1 at 2020-04-22 09:46:47 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/user_bars"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/userbars" for ::1 at 2020-04-22 09:46:50 -0500
+  
+ActionController::RoutingError (uninitialized constant UserbarsController
+Did you mean?  UserBarsController
+               UsersController):
+  
+activesupport (6.0.2.2) lib/active_support/inflector/methods.rb:282:in `const_get'
+activesupport (6.0.2.2) lib/active_support/inflector/methods.rb:282:in `block in constantize'
+activesupport (6.0.2.2) lib/active_support/inflector/methods.rb:280:in `each'
+activesupport (6.0.2.2) lib/active_support/inflector/methods.rb:280:in `inject'
+activesupport (6.0.2.2) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (6.0.2.2) lib/active_support/dependencies/zeitwerk_integration.rb:19:in `constantize'
+actionpack (6.0.2.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.2.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:45:in `controller'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/user_bars" for ::1 at 2020-04-22 09:47:00 -0500
+Processing by UserBarsController#index as HTML
+  [1m[36mUserBar Load (0.3ms)[0m  [1m[34mSELECT "user_bars".* FROM "user_bars"[0m
+  ↳ app/controllers/user_bars_controller.rb:5:in `index'
+Completed 200 OK in 23ms (Views: 7.0ms | ActiveRecord: 14.5ms | Allocations: 4677)
+
+
