@@ -1173,3 +1173,566 @@ Processing by UserBarsController#index as HTML
 Completed 200 OK in 23ms (Views: 7.0ms | ActiveRecord: 14.5ms | Allocations: 4677)
 
 
+Started GET "/" for ::1 at 2020-04-22 11:22:55 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/dougharrison/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 44.4ms | Allocations: 195)
+Completed 200 OK in 99ms (Views: 68.0ms | ActiveRecord: 0.0ms | Allocations: 735)
+
+
+Started GET "/users" for ::1 at 2020-04-23 14:29:45 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (35.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (28.7ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 642ms (Views: 271.8ms | ActiveRecord: 161.2ms | Allocations: 22443)
+
+
+Started GET "/users" for ::1 at 2020-04-23 14:58:12 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.7ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 115ms (Views: 100.6ms | ActiveRecord: 2.3ms | Allocations: 21868)
+
+
+Started POST "/users" for ::1 at 2020-04-23 15:00:17 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"username"=>"", "user"=>{"username"=>""}}
+Completed 400 Bad Request in 8ms (ActiveRecord: 0.0ms | Allocations: 116)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: users):
+  
+app/controllers/users_controller.rb:23:in `user_params'
+app/controllers/users_controller.rb:16:in `create'
+Started POST "/users" for ::1 at 2020-04-23 15:03:12 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"username"=>"", "user"=>{"username"=>""}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 49.8ms | Allocations: 131)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: users):
+  
+app/controllers/users_controller.rb:23:in `user_params'
+app/controllers/users_controller.rb:16:in `create'
+Started POST "/users" for ::1 at 2020-04-23 15:03:30 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"username"=>"", "user"=>{"username"=>""}}
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.0ms | Allocations: 112)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: users):
+  
+app/controllers/users_controller.rb:23:in `user_params'
+app/controllers/users_controller.rb:16:in `create'
+Started POST "/users" for ::1 at 2020-04-23 15:06:19 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>""}, "user"=>{}}
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (34.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", ""], ["created_at", "2020-04-23 20:06:19.552225"], ["updated_at", "2020-04-23 20:06:19.552225"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (23.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 204 No Content in 317ms (ActiveRecord: 68.2ms | Allocations: 6518)
+
+
+Started GET "/users" for ::1 at 2020-04-23 15:06:27 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 341ms (Views: 311.8ms | ActiveRecord: 29.3ms | Allocations: 19723)
+
+
+Started POST "/users" for ::1 at 2020-04-23 15:09:21 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"", "password"=>"[FILTERED]", "image"=>"", "about"=>""}, "user"=>{}}
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (14.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", ""], ["password", ""], ["image", ""], ["about", ""], ["created_at", "2020-04-23 20:09:21.714402"], ["updated_at", "2020-04-23 20:09:21.714402"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 204 No Content in 34ms (ActiveRecord: 25.5ms | Allocations: 2425)
+
+
+Started GET "/users" for ::1 at 2020-04-23 15:09:26 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (2.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 26ms (Views: 20.3ms | ActiveRecord: 5.6ms | Allocations: 8690)
+
+
+Started POST "/users" for ::1 at 2020-04-23 15:33:28 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"", "password"=>"[FILTERED]", "image"=>"", "about"=>""}, "user"=>{}}
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (7.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", ""], ["password", ""], ["image", ""], ["about", ""], ["created_at", "2020-04-23 20:33:28.901074"], ["updated_at", "2020-04-23 20:33:28.901074"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (12.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 204 No Content in 38ms (ActiveRecord: 21.6ms | Allocations: 2435)
+
+
+Started GET "/users" for ::1 at 2020-04-23 15:33:34 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (1.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (4.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (2.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 61ms (Views: 47.6ms | ActiveRecord: 12.4ms | Allocations: 10937)
+
+
+Started POST "/users" for ::1 at 2020-04-23 16:21:36 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"LilOrangeBoi", "password"=>"[FILTERED]", "image"=>"https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2561,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1494008878/articles/2017/04/05/too-many-donald-trump-disasters-to-count/170404-tomasky-trump-fails-tease_fbgwbm", "about"=>"I hate everything"}, "user"=>{}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (3.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "LilOrangeBoi"], ["password", "maga"], ["image", "https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2561,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1494008878/articles/2017/04/05/too-many-donald-trump-disasters-to-count/170404-tomasky-trump-fails-tease_fbgwbm"], ["about", "I hate everything"], ["created_at", "2020-04-23 21:21:36.480227"], ["updated_at", "2020-04-23 21:21:36.480227"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+Completed 204 No Content in 35ms (ActiveRecord: 15.8ms | Allocations: 2436)
+
+
+Started GET "/users" for ::1 at 2020-04-23 16:21:40 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (1.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 66ms (Views: 57.0ms | ActiveRecord: 8.5ms | Allocations: 13112)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 16:57:24 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (14.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 54ms (Views: 17.0ms | ActiveRecord: 23.3ms | Allocations: 4267)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:02:41 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (1.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 25ms (Views: 11.8ms | ActiveRecord: 3.8ms | Allocations: 4151)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:02:42 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (13.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (8.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (25.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (8.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 70ms (Views: 11.1ms | ActiveRecord: 55.8ms | Allocations: 4059)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:05:24 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (200.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (42.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (2.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 267ms (Views: 17.7ms | ActiveRecord: 246.3ms | Allocations: 4060)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:05:28 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (13.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (2.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 33ms (Views: 11.9ms | ActiveRecord: 18.3ms | Allocations: 4059)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:05:49 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (9.1ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (50.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (6.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 92ms (Views: 22.9ms | ActiveRecord: 66.1ms | Allocations: 4059)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:06:03 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (6.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (2.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 28ms (Views: 13.3ms | ActiveRecord: 11.9ms | Allocations: 4059)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:06:16 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (1.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 24ms (Views: 13.0ms | ActiveRecord: 8.4ms | Allocations: 4059)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:06:30 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (12.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (1.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 33ms (Views: 13.3ms | ActiveRecord: 15.2ms | Allocations: 4059)
+
+
+  [1m[35m (11.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (35.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (234.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_development"[0m
+  [1m[35m (184.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_test"[0m
+  [1m[35m (757.4ms)[0m  [1m[35mCREATE DATABASE "bs_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (381.8ms)[0m  [1m[35mCREATE DATABASE "bs_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (72.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4119871339920659190)[0m
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200421220532)
+  [1m[35m (42.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (28.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password" character varying, "image" character varying, "about" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (6.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220532"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBars (20200421220623)
+  [1m[35m (22.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (53.7ms)[0m  [1m[35mCREATE TABLE "bars" ("id" bigserial primary key, "name" character varying, "opened" character varying, "overview" character varying, "image" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (54.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220623"]]
+  [1m[35m (27.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserBars (20200421221637)
+  [1m[35m (91.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (49.9ms)[0m  [1m[35mCREATE TABLE "user_bars" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ddfff40346"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_221cab17e7"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_user_id" ON "user_bars"  ("user_id")[0m
+  [1m[35m (80.3ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_bar_id" ON "user_bars"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (41.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221637"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20200421221706)
+  [1m[35m (6.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (30.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "comment" character varying, "likes" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_da25a9c047"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_bar_id" ON "comments"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221706"]]
+  [1m[35m (13.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (14.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (161.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-23 22:13:02.715573"], ["updated_at", "2020-04-23 22:13:02.715573"]]
+  [1m[35m (6.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(4119871339920659190)[0m
+  [1m[35m (125.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (3.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "GoodBoi"], ["password", "datgoodboi"], ["image", "https://i.imgur.com/8KrqXXw.jpg"], ["about", "I really just want this to work"], ["created_at", "2020-04-23 22:13:16.322971"], ["updated_at", "2020-04-23 22:13:16.322971"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBar Create (0.9ms)[0m  [1m[32mINSERT INTO "bars" ("name", "opened", "overview", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "ye olde bar"], ["opened", "1868"], ["overview", "it's old as fuck"], ["image", ""], ["created_at", "2020-04-23 22:13:16.388710"], ["updated_at", "2020-04-23 22:13:16.388710"]]
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" WHERE "bars"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserBar Create (16.2ms)[0m  [1m[32mINSERT INTO "user_bars" ("user_id", "bar_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["bar_id", 1], ["created_at", "2020-04-23 22:13:16.471825"], ["updated_at", "2020-04-23 22:13:16.471825"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" WHERE "bars"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Create (2.3ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "bar_id", "comment", "likes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["bar_id", 1], ["comment", "I'm a dog, I have no idea what's going on"], ["likes", "14"], ["created_at", "2020-04-23 22:13:16.538331"], ["updated_at", "2020-04-23 22:13:16.538331"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users/1" for ::1 at 2020-04-23 17:14:39 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (1.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (2.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 404ms (Views: 220.4ms | ActiveRecord: 97.2ms | Allocations: 21670)
+
+
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (8734.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_development"[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (8733.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_development"[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (173.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_development"[0m
+  [1m[35m (150.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bs_backend_test"[0m
+  [1m[35m (218.2ms)[0m  [1m[35mCREATE DATABASE "bs_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (93.0ms)[0m  [1m[35mCREATE DATABASE "bs_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (28.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (23.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4119871339920659190)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200421220532)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password" character varying, "image" character varying, "about" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220532"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBars (20200421220623)
+  [1m[35m (8.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "bars" ("id" bigserial primary key, "name" character varying, "opened" character varying, "overview" character varying, "image" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421220623"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserBars (20200421221637)
+  [1m[35m (12.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.5ms)[0m  [1m[35mCREATE TABLE "user_bars" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ddfff40346"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_221cab17e7"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_user_id" ON "user_bars"  ("user_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_user_bars_on_bar_id" ON "user_bars"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221637"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20200421221706)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (29.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "user_id" bigint NOT NULL, "bar_id" bigint NOT NULL, "comment" character varying, "likes" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_da25a9c047"
+FOREIGN KEY ("bar_id")
+  REFERENCES "bars" ("id")
+)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_bar_id" ON "comments"  ("bar_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200421221706"]]
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (3.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-23 22:18:27.993911"], ["updated_at", "2020-04-23 22:18:27.993911"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4119871339920659190)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "GoodBoi"], ["password", "datgoodboi"], ["image", "https://i.imgur.com/8KrqXXw.jpg"], ["about", "Just a heckin good doggo that can type!"], ["created_at", "2020-04-23 22:18:36.101935"], ["updated_at", "2020-04-23 22:18:36.101935"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBar Create (0.7ms)[0m  [1m[32mINSERT INTO "bars" ("name", "opened", "overview", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "ye olde bar"], ["opened", "1868"], ["overview", "it's old as fuck"], ["image", ""], ["created_at", "2020-04-23 22:18:36.119166"], ["updated_at", "2020-04-23 22:18:36.119166"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" WHERE "bars"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserBar Create (1.1ms)[0m  [1m[32mINSERT INTO "user_bars" ("user_id", "bar_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["bar_id", 1], ["created_at", "2020-04-23 22:18:36.161707"], ["updated_at", "2020-04-23 22:18:36.161707"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" WHERE "bars"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Create (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "bar_id", "comment", "likes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["bar_id", 1], ["comment", "I'm a dog, I have no idea what's going on"], ["likes", "14"], ["created_at", "2020-04-23 22:18:36.188158"], ["updated_at", "2020-04-23 22:18:36.188158"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users/1" for ::1 at 2020-04-23 17:20:22 -0500
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (0.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 99ms (Views: 64.4ms | ActiveRecord: 10.8ms | Allocations: 26919)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:22:31 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (1.7ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (3.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 14ms (Views: 5.5ms | ActiveRecord: 6.8ms | Allocations: 4082)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:22:33 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (2.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (10.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 22ms (Views: 5.4ms | ActiveRecord: 15.4ms | Allocations: 4082)
+
+
+Started GET "/users/1" for ::1 at 2020-04-23 17:22:40 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mBar Load (0.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `show'
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 2.8ms | Allocations: 4082)
+
+
