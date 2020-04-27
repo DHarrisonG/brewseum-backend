@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(username: 'GoodBoi', password: 'datgoodboi', image: 'https://i.imgur.com/8KrqXXw.jpg', about: 'Just a heckin good doggo that can type!')
+User.create(username: 'GoodBoi', password_digest: 'datgoodboi', image: 'https://i.imgur.com/8KrqXXw.jpg', about: 'Just a heckin good doggo that can type!')
 
 Bar.create(name: 'ye olde bar', opened: '1868', overview: "it's old as fuck", image: '')
 

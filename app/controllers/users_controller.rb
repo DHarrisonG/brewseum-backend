@@ -12,10 +12,6 @@ class UsersController < ApplicationController
     render :json => @user, :include => {:bars => {:include => :comments}, :comments => {:all => :comment}}
   end
 
-  def create
-    @user = User.create(user_params)
-    @user.save
-  end
 
   private 
 
