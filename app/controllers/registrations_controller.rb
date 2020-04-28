@@ -4,6 +4,8 @@ class RegistrationsController < ApplicationController
             username: params['user']['username'],
             password: params['user']['password'],
             password_confirmation: params['user']['password'],
+            image: params['user']['image'],
+            about: params['user']['about']
         )
 
         if user
