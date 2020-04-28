@@ -5541,3 +5541,653 @@ Processing by RegistrationsController#create as HTML
 Completed 200 OK in 370ms (Views: 10.4ms | ActiveRecord: 1.2ms | Allocations: 3701)
 
 
+Started GET "/users" for ::1 at 2020-04-28 16:06:19 -0500
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+No serializer found for resource: #<User id: 1, username: "GoodBoi", password_digest: [FILTERED], image: "https://i.imgur.com/8KrqXXw.jpg", about: "Just a heckin good doggo that can type!", created_at: "2020-04-27 16:45:25", updated_at: "2020-04-27 16:45:25">
+[active_model_serializers]   [1m[36mBar Load (1.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (4.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (20.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (2.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (415.96ms)
+Completed 200 OK in 469ms (Views: 351.3ms | ActiveRecord: 103.3ms | Allocations: 69915)
+
+
+Started GET "/users" for ::1 at 2020-04-28 16:08:28 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+No serializer found for resource: #<User id: 1, username: "GoodBoi", password_digest: [FILTERED], image: "https://i.imgur.com/8KrqXXw.jpg", about: "Just a heckin good doggo that can type!", created_at: "2020-04-27 16:45:25", updated_at: "2020-04-27 16:45:25">
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (137.49ms)
+Completed 200 OK in 150ms (Views: 134.3ms | ActiveRecord: 14.0ms | Allocations: 46297)
+
+
+Started GET "/users" for ::1 at 2020-04-28 16:08:59 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+No serializer found for resource: #<User id: 1, username: "GoodBoi", password_digest: [FILTERED], image: "https://i.imgur.com/8KrqXXw.jpg", about: "Just a heckin good doggo that can type!", created_at: "2020-04-27 16:45:25", updated_at: "2020-04-27 16:45:25">
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (2.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (2.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (142.56ms)
+Completed 200 OK in 149ms (Views: 123.3ms | ActiveRecord: 24.8ms | Allocations: 46314)
+
+
+Started GET "/users" for ::1 at 2020-04-28 16:09:37 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+No serializer found for resource: #<User id: 1, username: "GoodBoi", password_digest: [FILTERED], image: "https://i.imgur.com/8KrqXXw.jpg", about: "Just a heckin good doggo that can type!", created_at: "2020-04-27 16:45:25", updated_at: "2020-04-27 16:45:25">
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (2.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (4.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (3.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (2.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.7ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (9.6ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (5.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (12.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (3.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.7ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (7.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (5.1ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (248.66ms)
+Completed 200 OK in 256ms (Views: 182.4ms | ActiveRecord: 72.1ms | Allocations: 46287)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-04-28 16:11:20 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/users" for ::1 at 2020-04-28 16:12:09 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"jay", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>"jay", "about"=>"jay"}, "user"=>{}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "jay"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "jay"], ["password_digest", "$2a$12$VfGKtVQkydOYr2/SMfBPm.LiR2enMfKeHde1QM3abn./JnO91jgzq"], ["image", "jay"], ["about", "jay"], ["created_at", "2020-04-28 21:12:10.102409"], ["updated_at", "2020-04-28 21:12:10.102409"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."id" != $2 LIMIT $3[0m  [["username", "jay"], ["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 204 No Content in 266ms (ActiveRecord: 6.8ms | Allocations: 6416)
+
+
+Started GET "/users" for ::1 at 2020-04-28 16:12:15 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+No serializer found for resource: #<User id: 1, username: "GoodBoi", password_digest: [FILTERED], image: "https://i.imgur.com/8KrqXXw.jpg", about: "Just a heckin good doggo that can type!", created_at: "2020-04-27 16:45:25", updated_at: "2020-04-27 16:45:25">
+[active_model_serializers]   [1m[36mBar Load (0.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.1ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.2ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.7ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 18]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 18]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (81.15ms)
+Completed 200 OK in 86ms (Views: 73.6ms | ActiveRecord: 11.9ms | Allocations: 48842)
+
+
+Started GET "/users" for ::1 at 2020-04-28 16:29:11 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+No serializer found for resource: #<User id: 1, username: "GoodBoi", password_digest: [FILTERED], image: "https://i.imgur.com/8KrqXXw.jpg", about: "Just a heckin good doggo that can type!", created_at: "2020-04-27 16:45:25", updated_at: "2020-04-27 16:45:25">
+[active_model_serializers]   [1m[36mBar Load (8.1ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."bar_id" = $1[0m  [["bar_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (3.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.9ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (57.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (30.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (17.0ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (8.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (46.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (3.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (47.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (5.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (12.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (12.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (6.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 8]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (3.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (10.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 9]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 10]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (9.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 11]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (17.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (23.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 12]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.5ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 13]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (15.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.8ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (5.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 15]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 16]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (1.4ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 17]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mBar Load (0.3ms)[0m  [1m[34mSELECT "bars".* FROM "bars" INNER JOIN "comments" ON "bars"."id" = "comments"."bar_id" WHERE "comments"."user_id" = $1[0m  [["user_id", 18]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 18]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with User::ActiveRecord_Relation (836.41ms)
+Completed 200 OK in 849ms (Views: 281.8ms | ActiveRecord: 566.0ms | Allocations: 48933)
+
+
+Started POST "/users" for ::1 at 2020-04-28 16:31:45 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"grape", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>"grapse", "about"=>"grapse"}, "user"=>{}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "grape"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "grape"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 204 No Content in 1531ms (ActiveRecord: 14.7ms | Allocations: 186904)
+
+
+Started POST "/users" for ::1 at 2020-04-28 16:31:53 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"grape", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>"grapse", "about"=>"grapse"}, "user"=>{}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "grape"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "grape"], ["password_digest", "$2a$12$QzsrpvbxZpkC2ur0Yj0rB.bmZiOMns1mU6KE7NasEuvAbTvcm/WaK"], ["image", "grapse"], ["about", "grapse"], ["created_at", "2020-04-28 21:31:53.926243"], ["updated_at", "2020-04-28 21:31:53.926243"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."id" != $2 LIMIT $3[0m  [["username", "grape"], ["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 204 No Content in 420ms (ActiveRecord: 5.2ms | Allocations: 5879)
+
+
+Started POST "/users" for ::1 at 2020-04-28 16:32:26 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"ppppp", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>"ppppp", "about"=>"ppppppp"}, "user"=>{}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "ppppp"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "ppppp"], ["password_digest", "$2a$12$qqqn49IVbQbMsofVmnD4g.awpTzEgoySx19vbYJyzIJRGaKwZn5LG"], ["image", "ppppp"], ["about", "ppppppp"], ["created_at", "2020-04-28 21:32:27.586408"], ["updated_at", "2020-04-28 21:32:27.586408"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."id" != $2 LIMIT $3[0m  [["username", "ppppp"], ["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 204 No Content in 1053ms (ActiveRecord: 8.8ms | Allocations: 5883)
+
+
+Started POST "/users" for ::1 at 2020-04-28 16:33:09 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"www", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>"www", "about"=>"wwww"}, "user"=>{}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "www"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "www"], ["password_digest", "$2a$12$k28I9ZTZ9PYILOqyEmVbqOqn6VKNr4Cz2vhS4mZvnc.8Vu8KHHyqi"], ["image", "www"], ["about", "wwww"], ["created_at", "2020-04-28 21:33:10.032788"], ["updated_at", "2020-04-28 21:33:10.032788"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."id" != $2 LIMIT $3[0m  [["username", "www"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 204 No Content in 453ms (ActiveRecord: 3.4ms | Allocations: 5880)
+
+
+Started POST "/users" for ::1 at 2020-04-28 16:37:06 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"zzz", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>"zzz", "about"=>"zzz"}, "user"=>{}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "zzz"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "zzz"], ["password_digest", "$2a$12$RUcYAJUIJ99/QlbSR4tdQ.83FZxmOqt635oXBtMWWwc4coAX0U3h6"], ["image", "zzz"], ["about", "zzz"], ["created_at", "2020-04-28 21:37:06.669840"], ["updated_at", "2020-04-28 21:37:06.669840"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."id" != $2 LIMIT $3[0m  [["username", "zzz"], ["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 204 No Content in 424ms (ActiveRecord: 3.0ms | Allocations: 5882)
+
+
+Started POST "/users" for ::1 at 2020-04-28 16:38:27 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"users"=>{"username"=>"lll", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "image"=>"lll", "about"=>"lll"}, "user"=>{}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "lll"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "image", "about", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "lll"], ["password_digest", "$2a$12$k5CIfuqTPH9GTKYDuWDmJ.NypG/6/gmW4LqCDOXwVNfldx8Gvngf."], ["image", "lll"], ["about", "lll"], ["created_at", "2020-04-28 21:38:28.409602"], ["updated_at", "2020-04-28 21:38:28.409602"]]
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."id" != $2 LIMIT $3[0m  [["username", "lll"], ["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.27ms)
+Completed 200 OK in 333ms (Views: 3.9ms | ActiveRecord: 12.6ms | Allocations: 10764)
+
+
