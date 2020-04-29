@@ -16,10 +16,14 @@ ActiveRecord::Schema.define(version: 2020_04_21_221706) do
   enable_extension "plpgsql"
 
   create_table "bars", force: :cascade do |t|
+    t.string "state"
+    t.string "city"
     t.string "name"
-    t.string "opened"
+    t.integer "opened"
     t.string "overview"
     t.string "image"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
