@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    render :json => user, :include => {:bars => {:include => :comments}, :comments => {:all => :comment}}
+    # render :json => user, :include => {:user_bars => {}, :bars => {:include => :comments}, :comments => {:all => :comment}}
+    render :json => user, :include => {:user_bars => {:include => :bar}, :comments => {:include => :bar}} 
   end
 
   def create
