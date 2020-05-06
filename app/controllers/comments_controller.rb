@@ -21,7 +21,16 @@ class CommentsController < ApplicationController
       comment.destroy
       comments = Comments.all
       render json: comments.to_json(comment_serializer)
-  end
+    end
+
+    def update
+      comment = Comment.find_by(id: params[:id])
+      comment.update(comment: params[:comment])
+      render json: comment
+
+    end
+
+
 
       private
 

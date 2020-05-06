@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_04_21_221706) do
     t.bigint "user_id", null: false
     t.bigint "bar_id", null: false
     t.string "comment"
-    t.string "likes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bar_id"], name: "index_comments_on_bar_id"
