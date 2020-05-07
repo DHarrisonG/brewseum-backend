@@ -1,26 +1,31 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized
 
   def index
-    @users = User.all
-    render :json => @users, :include => {:bars => {:include => :comments}, :comments => {:all => :comment}}
-    # render :json => @programs, :include => {:insurer => {:only => :name}}, :except => [:created_at, :updated_at]
-    # render json: @users, except: [:created_at, :updated_at], include: [:bars, :comments]
+    users = User.all
+    render json: users
   end
 
   def show
-    @user = User.find(params[:id])
-    render :json => @user, :include => {:bars => {:include => :comments}, :comments => {:all => :comment}}
+    user = User.find(params[:id])
+    render json: user
   end
 
   def create
-    @user = User.create(user_params)
-    @user.save
+    user = User.create(user_params)
+   
+    if user.valid?
+      render json: { user: user, status: :created}
+    else
+      render json: { error: 'failed to create user', status: :not_acceptable}
+    end
   end
+
 
   private 
 
   def user_params
-    params.require(:users).permit(:username, :password, :image, :about)
+    params.require(:users).permit(:username, :password, :password_confirmation, :image, :about)
   end
 
   

@@ -16,10 +16,14 @@ ActiveRecord::Schema.define(version: 2020_04_21_221706) do
   enable_extension "plpgsql"
 
   create_table "bars", force: :cascade do |t|
+    t.string "state"
+    t.string "city"
     t.string "name"
-    t.string "opened"
+    t.integer "opened"
     t.string "overview"
     t.string "image"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -28,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_04_21_221706) do
     t.bigint "user_id", null: false
     t.bigint "bar_id", null: false
     t.string "comment"
-    t.string "likes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bar_id"], name: "index_comments_on_bar_id"
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_221706) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "image"
     t.string "about"
     t.datetime "created_at", precision: 6, null: false
